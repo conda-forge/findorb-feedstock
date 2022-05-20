@@ -1,9 +1,9 @@
 {% set name = "findorb" %}
-{% set version = "0.0.20210525" %}
-{% set sha_findorb = "82957a50ac47c0c00316c3d6ee51e77fa2086089" %}
-{% set sha_lunar = "a18abc69979f9bd0083038e6bfdbac520ad37243" %}
-{% set sha_jpl_eph = "85c79a0d24dfc90ab5fd35499a96a2e4cc0b9d5a" %}
-{% set sha_sat_code = "884f19361e236e5222fcc0f49ebff4cba5243919" %}
+{% set version = "0.0.20220506" %}
+{% set sha_findorb = "343e680040ee2bde5d17ff413cc80809622b7463" %}
+{% set sha_lunar = "021806dc0983ad6f028504da9e95c0ff4a6f5852" %}
+{% set sha_jpl_eph = "3911106829157e70dada93bf5f0fcaaf0582df76" %}
+{% set sha_sat_code = "47e5c69c3bb32e86d3f2d2461301ab8d24c0d5d9" %}
 
 package:
   name: {{ name|lower }}
@@ -11,16 +11,16 @@ package:
 
 source:
   - url: https://github.com/Bill-Gray/find_orb/archive/{{ sha_findorb }}.tar.gz
-    sha256: 1ef329f4bccaad22ada2aeb061ae3ed7a281f453143cc5f6bebc0ab668dec2ba
+    sha256: 6f275d245c5088bbde041f6c58f3ca25055b3c07917c4f9e6a6a6f008e439e6c
     folder: sources/find_orb
   - url: https://github.com/Bill-Gray/lunar/archive/{{ sha_lunar }}.tar.gz
-    sha256: a10be9850407006d4bc7ac34ef34343560993793562950b8091814f75670584a
+    sha256: f9a022f12e846f3a46340e5537c8bc9e4b0763d130ac876ccf5bf9d7fc9b48d8
     folder: sources/lunar
   - url: https://github.com/Bill-Gray/jpl_eph/archive/{{ sha_jpl_eph }}.tar.gz
-    sha256: b902fdbd19182a1670d99ec16ea3646ffa8a20fe240e475d37943978ab9ea6e1
+    sha256: 98adc4f262db34dae40bbbdc3763c9d31fc98c96a9162d45eae230e6c3d530b7
     folder: sources/jpl_eph
   - url: https://github.com/Bill-Gray/sat_code/archive/{{ sha_sat_code }}.tar.gz
-    sha256: e522926b0959f042b05e815bcf007de466c58495e4a980962d0e2e04602a3345
+    sha256: 6b0cf5533ebeeb3d290cbbd8737d230e54b238e52d293a74031f28edb0497aea
     folder: sources/sat_code
 
 build:
