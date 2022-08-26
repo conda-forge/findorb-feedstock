@@ -1,0 +1,27 @@
+diff --git a/makefile b/makefile
+index 8800aac..c28f495 100644
+--- a/makefile
++++ b/makefile
+@@ -128,11 +128,13 @@ endif
+ all: $(FO_EXE) $(FIND_ORB_EXE) fo_serve.cgi eph2tle$(EXE)
+ 
+ CXXFLAGS+=-c -Wall -pedantic -Wextra -Werror $(ADDED_CXXFLAGS) -I $(INSTALL_DIR)/include
++CFLAGS+=-c -Wall -pedantic -Wextra -Werror -I $(INSTALL_DIR)/include
+ 
+ ifdef DEBUG
+ 	CXXFLAGS += -g -O0
+ else
+ 	CXXFLAGS += -O3
++	CFLAGS += -O3
+ endif
+ 
+ OBJS=ades_out.o b32_eph.o bc405.o bias.o collide.o conv_ele.o details.o eigen.o \
+@@ -191,7 +193,7 @@ clipfunc.o:        clipfunc.cpp
+ 	$(CXX) $(CXXFLAGS) $(CURSES_FLAGS) $<
+ 
+ getstrex.o:        getstrex.c
+-	$(CC) $(CXXFLAGS) $(CURSES_FLAGS) $<
++	$(CC) $(CFLAGS) $(CURSES_FLAGS) $<
+ 
+ $(FO_EXE):          fo.o $(OBJS) $(RES_FILENAME)
+ 	$(CXX) -o $(FO_EXE) fo.o $(OBJS) $(LIBS) $(RES_FILENAME) $(LDFLAGS)
