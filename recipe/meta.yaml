@@ -13,6 +13,8 @@ source:
   - url: https://github.com/Bill-Gray/find_orb/archive/{{ sha_findorb }}.tar.gz
     sha256: 6400f1b8b9028bf5d8d7b77715c6f8af2e7d41734b862ba8d692acc9e6830f04
     folder: sources/find_orb
+    patches:
+      - conda-compat.patch # git diff master..conda > conda-compat.patch
   - url: https://github.com/Bill-Gray/lunar/archive/{{ sha_lunar }}.tar.gz
     sha256: 0158ffcbc395eae35d815dd8a8bd8eb47221c46b82a359de0d7a0803a9ec7579
     folder: sources/lunar
