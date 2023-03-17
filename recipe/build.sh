@@ -7,12 +7,14 @@ for s in lunar jpl_eph sat_code find_orb; do
 	(cd sources/$s && make clean)
 done
 
+CURSES_LIB=$([[ "$(uname)" == "Darwin" ]] && echo "-lncurses" || echo "-lncursesw")
+
 # build all
 ( cd sources/lunar    && make                          && make install )
 ( cd sources/jpl_eph  && make libjpl.a                 && make install )
 ( cd sources/lunar    && make integrat                 && make install ) # must be a separate step as it depends on jpl_eph
 ( cd sources/sat_code && make sat_id                   && make install )
-( cd sources/find_orb && make CURSES_LIB="-lncursesw"  && make install )
+( cd sources/find_orb && make CURSES_LIB="$CURSES_LIB" && make install )
 
 # clean up the libraries and headers we won't distribute
 rm -f $PREFIX/lib/{libjpl,liblunar,libsatell}.a
