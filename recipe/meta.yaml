@@ -1,9 +1,9 @@
 {% set name = "findorb" %}
-{% set version = "0.0.20210525" %}
-{% set sha_findorb = "82957a50ac47c0c00316c3d6ee51e77fa2086089" %}
-{% set sha_lunar = "a18abc69979f9bd0083038e6bfdbac520ad37243" %}
-{% set sha_jpl_eph = "85c79a0d24dfc90ab5fd35499a96a2e4cc0b9d5a" %}
-{% set sha_sat_code = "884f19361e236e5222fcc0f49ebff4cba5243919" %}
+{% set version = "0.0.20220824" %}
+{% set sha_findorb = "c5d8d5806faaf96d3eb26a2d62d07bbe3d446b82" %}
+{% set sha_lunar = "05c54ba6655daba25fd80c91e7ddae7fa48e409e" %}
+{% set sha_jpl_eph = "6716858ef2630b5a1bfde42248d9ef3fa3b22aee" %}
+{% set sha_sat_code = "47e5c69c3bb32e86d3f2d2461301ab8d24c0d5d9" %}
 
 package:
   name: {{ name|lower }}
@@ -11,16 +11,18 @@ package:
 
 source:
   - url: https://github.com/Bill-Gray/find_orb/archive/{{ sha_findorb }}.tar.gz
-    sha256: 1ef329f4bccaad22ada2aeb061ae3ed7a281f453143cc5f6bebc0ab668dec2ba
+    sha256: 6400f1b8b9028bf5d8d7b77715c6f8af2e7d41734b862ba8d692acc9e6830f04
     folder: sources/find_orb
+    patches:
+      - conda-compat.patch # git diff master..conda > conda-compat.patch
   - url: https://github.com/Bill-Gray/lunar/archive/{{ sha_lunar }}.tar.gz
-    sha256: a10be9850407006d4bc7ac34ef34343560993793562950b8091814f75670584a
+    sha256: 0158ffcbc395eae35d815dd8a8bd8eb47221c46b82a359de0d7a0803a9ec7579
     folder: sources/lunar
   - url: https://github.com/Bill-Gray/jpl_eph/archive/{{ sha_jpl_eph }}.tar.gz
-    sha256: b902fdbd19182a1670d99ec16ea3646ffa8a20fe240e475d37943978ab9ea6e1
+    sha256: 79f73561f040acff7f2397b2bed856ff0e98f795bc8d70d1e96f9863a406bb82
     folder: sources/jpl_eph
   - url: https://github.com/Bill-Gray/sat_code/archive/{{ sha_sat_code }}.tar.gz
-    sha256: e522926b0959f042b05e815bcf007de466c58495e4a980962d0e2e04602a3345
+    sha256: 6b0cf5533ebeeb3d290cbbd8737d230e54b238e52d293a74031f28edb0497aea
     folder: sources/sat_code
 
 build:
@@ -62,3 +64,4 @@ extra:
   recipe-maintainers:
     - mjuric
     - moeyensj
+    - caditi97
