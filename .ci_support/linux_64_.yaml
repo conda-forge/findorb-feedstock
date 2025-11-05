@@ -1,26 +1,16 @@
-cdt_name:
-- cos6
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 curl:
-- '7'
+- '8'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '9'
+- '14'
 docker_image:
-- quay.io/condaforge/linux-anvil-comp7
+- quay.io/condaforge/linux-anvil-x86_64:alma9
 ncurses:
-- '6.2'
-pin_run_as_build:
-  curl:
-    max_pin: x
-  ncurses:
-    max_pin: x.x
+- '6'
 target_platform:
 - linux-64
-zip_keys:
-- - cdt_name
-  - docker_image
