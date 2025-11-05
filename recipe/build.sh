@@ -12,6 +12,11 @@ done
 # overwrite the CPP environment variable and point it to the compiler instead.
 export CPP="$CXX"
 
+# Makefiles in find_orb test for CLANG to identify they're running on the Mac,
+# and then override the values of CC and CXX. This breaks the cross-compile 
+# build on Apple Silicon.
+unset CLANG
+
 # makefile in jpl_eph uses CPP for the C++ compiler.  This collides with the
 # C preprocessor on Unix-y OS-es. Let's replace it with CXX
 #sed -i.bak 's/CPP/CXX/g' sources/lunar/makefile && rm -f sources/lunar/makefile.bak
