@@ -46,8 +46,10 @@ requirements:
   host:
     - cpp-filesystem  # [osx and x86_64]
     - ncurses
+    - zlib
   run:
     - ncurses
+    - zlib
     - findorb-data-de430t
 
 test:
