@@ -7,10 +7,15 @@ for s in lunar jpl_eph sat_code find_orb; do
 	(cd sources/$s && make clean)
 done
 
+# Makefiles in find_orb and its dependencies use an environment variable called CPP
+# which is reserved in the conda build environment as the C preprocessor. Here we
+# overwrite the CPP environment variable and point it to the compiler instead.
+export CPP="$CXX"
+
 # makefile in jpl_eph uses CPP for the C++ compiler.  This collides with the
 # C preprocessor on Unix-y OS-es. Let's replace it with CXX
-sed -i.bak 's/CPP/CXX/g' sources/lunar/makefile && rm -f sources/lunar/makefile.bak
-cat sources/lunar/makefile
+#sed -i.bak 's/CPP/CXX/g' sources/lunar/makefile && rm -f sources/lunar/makefile.bak
+#cat sources/lunar/makefile
 
 # build all
 ( cd sources/lunar    && make                          && make install )
