@@ -38,12 +38,14 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("cxx") }}
+    - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - make
     - curl
     - git
   host:
-    - cpp-filesystem  # [osx]
+#    - cpp-filesystem  # [osx and x86_64]
     - ncurses
   run:
     - ncurses

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 # helpful while developing from local sources that may be partially built
 for s in lunar jpl_eph sat_code find_orb; do
@@ -9,7 +9,8 @@ done
 
 # makefile in jpl_eph uses CPP for the C++ compiler.  This collides with the
 # C preprocessor on Unix-y OS-es. Let's replace it with CXX
-sed -i.bak 's/\bCPP\b/CXX/g' sources/lunar/makefile && rm -f sources/lunar/makefile.bak
+sed -i.bak 's/CPP/CXX/g' sources/lunar/makefile && rm -f sources/lunar/makefile.bak
+cat sources/lunar/makefile
 
 # build all
 ( cd sources/lunar    && make                          && make install )
