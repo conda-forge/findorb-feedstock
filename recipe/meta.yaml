@@ -1,13 +1,13 @@
 {% set name = "findorb" %}
 {% set version = "0.0.20251104" %}
 # to update, clone the repos into the same directory and then run:
-#   for s in find_orb lunar jpl_eph sat_code; do (cd $s && echo '{% set sha_'$s' = "'$(git rev-parse HEAD)'" %}' ); done;
+#   for s in find_orb lunar jpl_eph sat_code; do (cd $s && echo '{''% set sha_'$s' = "'$(git rev-parse HEAD)'" %''}' ); done;
 {% set sha_find_orb = "8ac1a8491fb502a09628e687bdf6ecdcd630a4c5" %}
 {% set sha_lunar = "d1de289519afd3960511bfbdeeeb23f8f7394491" %}
 {% set sha_jpl_eph = "0c2782e86e42df69a55c2b2db0b72a40312c79c0" %}
 {% set sha_sat_code = "9b54d33738358ad720fc946f47018b7cc8e0a5fd" %}
 # then run
-#   for s in find_orb lunar jpl_eph sat_code; do echo "{% set sha256_$s = \""$(curl -L -s https://github.com/Bill-Gray/$s/archive/$(git -C $s rev-parse HEAD).tar.gz | openssl sha256 | cut -d' ' -f2)" %}\""; done;
+#   for s in find_orb lunar jpl_eph sat_code; do echo "{""% set sha256_$s = \""$(curl -L -s https://github.com/Bill-Gray/$s/archive/$(git -C $s rev-parse HEAD).tar.gz | openssl sha256 | cut -d' ' -f2)" %""}\""; done;
 {% set sha256_find_orb = "945a6e520389c08b2900d43e0f9dfdc9dbc35e809b3bebb5761dfe51e82b282b" %}
 {% set sha256_lunar = "d4bf19e9e15f7cacdae66f8b3e5a65c8761ff6f8a184fb23ced90f8ba396b370" %}
 {% set sha256_jpl_eph = "d2e906db52e0f2987b0126d734a565c00e9763150b6ee1f47ad2509c149679fa" %}
@@ -38,6 +38,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - make
     - curl
     - git
